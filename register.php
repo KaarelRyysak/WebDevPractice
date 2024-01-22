@@ -34,8 +34,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if($username == $table_user)
         {
             $userDataValid = false;
-            print '<script>alert("Username has been taken!");</script>'; // prompts user
-            print '<script>window.location.assign("register.php");</script>'; // redirects
+            echo '<script>alert("Username has been taken!");</script>'; // prompts user
+            echo '<script>window.location.assign("register.php");</script>'; // redirects
         }
     }
     
@@ -45,8 +45,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         VALUES (?, ?)"); // prepares to insert values into table users
         $stmt->bind_param("ss", $username, $password); // binds values to statement (to avoid injection)
         $stmt->execute();
-        print '<script>alert("Successfully Registered!");</script>'; // prompts user
-        print '<script>window.location.assign("index.php");</script>'; // redirects
+        echo '<script>alert("Successfully Registered!");</script>'; // prompts user
+        echo '<script>window.location.assign("index.php");</script>'; // redirects
     }
 }
 ?>

@@ -42,12 +42,12 @@
     {
         // Note: the current system is very susceptible to basic dictionary cracking, so
         // informing users whether their username/password is valid is not advised. 
-        // I am doing so strictly for demo and testing purposes.
+        // This application does so strictly for demonstration and testing purposes.
 
-        // A real and fully realized application should only return a generic 
+        // A fully realized application should only return a generic 
         // "wrong username or password" prompt. It should also require some form of captcha
         // to prevent rapid password cracking attempts. The internet is unpredictable,
-        // we need to prepare for any and all types of actors.
+        // it is important to prepare for any and all types of actors.
         echo '<script>alert("Incorrect username!");</script>';        // Prompts the user
         echo '<script>window.location.assign("login.php");</script>'; // redirects to login.php
     }

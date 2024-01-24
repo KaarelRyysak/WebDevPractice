@@ -1,0 +1,59 @@
+  html {
+    font-family: "Roboto", sans-serif;
+  }
+  
+  input[type="button"],
+  input[type="submit"] {
+    font-family: "Roboto", sans-serif;
+    display: inline-block;
+    padding: 5px 5px;
+    font-size: 15px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #04aa70;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 0 2px #999;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+  
+  input[type="button"]:hover,
+  input[type="submit"]:hover {background-color: #3b7c65}
+  
+  input[type="button"]:active, 
+  input[type="submit"]:active {
+    background-color: #3b7c65;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
+  
+  /* For mobile phones: */
+  input {
+    width: 100%;
+  }
+  h2, p {
+    text-align: center;
+  }
+  
+  @media only screen and (min-width: 600px) {
+    /* For tablets: */
+    input {
+        width: initial;
+    }
+    h2, p {
+        text-align: initial;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    /* For desktop: */
+    input {
+        width: initial;
+    }
+    h2, p {
+        text-align: initial;
+    }
+  }

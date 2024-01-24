@@ -9,10 +9,10 @@
     Some security improvements were also implemented to prevent code injection 
     and encourage good cybersecurity practices.
 -->
-
+<script type="text/javascript" src="./js/loadContent.js"></script>
 <?php
 
-//set page template filename, this will be called within general template
+//set login page template filename, this will be called within general template
 $template = "./public/main_tmp.php";
 
 //call a general template:

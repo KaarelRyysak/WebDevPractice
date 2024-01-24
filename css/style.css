@@ -1,9 +1,21 @@
   html {
     font-family: "Roboto", sans-serif;
   }
+
+  a.linkstyle {
+    cursor:pointer;
+    color:blue;
+    text-decoration:underline;
+  }
+
+  a.linkstyle:hover {
+    text-decoration:none;
+    text-shadow: 0px 1px 1px #555;
+  }
   
   input[type="button"],
-  input[type="submit"] {
+  input[type="submit"],
+  button {
     font-family: "Roboto", sans-serif;
     display: inline-block;
     padding: 5px 5px;
@@ -22,17 +34,20 @@
   }
   
   input[type="button"]:hover,
-  input[type="submit"]:hover {background-color: #3b7c65}
+  input[type="submit"]:hover,
+  button:hover {background-color: #3b7c65}
   
   input[type="button"]:active, 
-  input[type="submit"]:active {
+  input[type="submit"]:active,
+  button:active {
     background-color: #3b7c65;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
   }
   
   /* For mobile phones: */
-  input {
+  input,
+  button {
     width: 100%;
   }
   h2, p {
@@ -41,7 +56,8 @@
   
   @media only screen and (min-width: 600px) {
     /* For tablets: */
-    input {
+    input,
+    button {
         width: initial;
     }
     h2, p {
@@ -50,7 +66,8 @@
   }
   @media only screen and (min-width: 768px) {
     /* For desktop: */
-    input {
+    input,
+    button {
         width: initial;
     }
     h2, p {

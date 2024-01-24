@@ -8,7 +8,9 @@
     </head>
     <body>
         <div id="page">
-            <?php include $template ?>  
+            <div id="login">
+            <?php include $template ?> 
+            </div>
             <!-- the $template path is assigned in main script -->
         </div>
     </body>

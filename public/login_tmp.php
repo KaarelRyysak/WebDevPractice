@@ -1,5 +1,5 @@
 <h2>Login Page</h2>
-<a href="index.php">Back</a><br/><br/>
+<a class=linkstyle onclick="loadAndReplaceContent('index.php', 'login')">Back</a>
 <form action="checklogin.php" method="POST">
     Enter Username: <input type="text"
     name="username" required="required" /> <br/>

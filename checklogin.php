@@ -1,14 +1,18 @@
 <?php
     session_start();
-    $mysqli = new mysqli("localhost", "root", "") or die(mysqli_error($mysqli));
-    $mysqli->select_db("db_one") or die("Cannot connect to database");
+    $settings = include './config/config.php';
+    echo $settings['hostname'].$settings['username'].$settings['password'];
+    //connect to database with info from config.php
+    $mysqli = new mysqli($settings['hostname'], $settings['username'], $settings['password']) or die("Cannot connect to database, check settings.php");
+    $mysqli->select_db($settings['database']) or die("Invalid database name, check settings.php");
+    
     $username = $mysqli->real_escape_string($_POST["username"]);
     $password = $mysqli->real_escape_string($_POST["password"]);
     $bool = true;
 
     $mysqli->connect("localhost", "root", "") or die (mysqli_error($mysqli));
     $mysqli->select_db("db_one") or die("Cannot connect to database");
-    $stmt = $mysqli->prepare("SELECT * FROM users WHERE username=?");
+    $stmt = $mysqli->prepare("SELECT * FROM ".$settings['user_table']." WHERE username=?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();

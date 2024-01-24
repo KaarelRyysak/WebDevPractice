@@ -9,16 +9,12 @@
     Some security improvements were also implemented to prevent code injection 
     and encourage good cybersecurity practices.
 -->
-<html> 
-    <head>
-        <title>Basic PHP website with login</title>
-    </head>
-    <body>
-        <h2>Main Page</h2>
-        <?php
-            echo "<p>Welcome to the website!</p>";
-        ?>
-        <a href="login.php"> Log In <br/>
-        <a href="register.php"> Register
-    </body>
-</html>
+
+<?php
+
+//set page template filename, this will be called within general template
+$template = "./public/main_tmp.php";
+
+//call a general template:
+include "./public/header_footer_tmp.php";
+?>

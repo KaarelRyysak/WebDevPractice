@@ -1,32 +1,16 @@
-<html>
-    <head>
-        <title>Basic PHP website with login</title>
-    </head>
-    <body>
-        <h2>Registration Page</h2>
-        <a href="index.php">Return</a><br/><br/>
-        <form action="register.php" method="POST">
-            Enter Username: <input type="text"
-            name="username" required="required" /> <br/>
-            Enter Password: <input type="password"
-            name="password" required="required" /> <br/>
-            <input type="submit" value="Register"/>
-        </form>
-    </body>
-</html>
-
 <?php
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    echo "Username entered is: ". $username . "<br />";
-    echo "Password entered is: ". $password;
+    $settings = include './config/config.php';
 
-    $mysqli = new mysqli("localhost", "root", "") or die(mysqli_error($mysqli));
-    $mysqli->select_db("db_one") or die("Cannot connect to database");
+    //connect to database with info from config.php
+    $mysqli = new mysqli($settings['hostname'], $settings['username'], $settings['password']) or die("Cannot connect to database, check settings.php");
+    $mysqli->select_db($settings['database']) or die("Invalid database name, check settings.php");
+
     $username = $mysqli->real_escape_string($_POST['username']);
     $password = $mysqli->real_escape_string($_POST['password']);
 
     $userDataValid = true;
-    $query = "SELECT * FROM users";
+    $query = "SELECT * FROM ".$settings['user_table'];
     $result = $mysqli->query($query); // query for the users table
     while ($row = $result->fetch_array()) { // go through each row individually
         $table_user = $row['username'];
@@ -41,7 +25,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     if($userDataValid)
     {
-        $stmt = $mysqli->prepare("INSERT INTO users (username, password)
+        $stmt = $mysqli->prepare("INSERT INTO ".$settings['user_table']." (username, password)
         VALUES (?, ?)"); // prepares to insert values into table users
         $stmt->bind_param("ss", $username, $password); // binds values to statement (to avoid injection)
         $stmt->execute();
@@ -49,4 +33,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo '<script>window.location.assign("index.php");</script>'; // redirects
     }
 }
+//set page template filename, this will be called within general template
+$template = "./public/register_tmp.php";
+
+//call a general template:
+include "./public/header_footer_tmp.php";
 ?>

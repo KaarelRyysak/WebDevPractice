@@ -1,5 +1,4 @@
 <h2>Home Page</h2>
 <p>Hello <?php print "$user"?>!</p>
-<a href="logout.php">
-    <input type="button" name="so_link" value="Log Out">
+<button type="button" onclick="loadAndReplaceContent('logout.php', 'login')">Log Out</button>
 </a><br/><br/>

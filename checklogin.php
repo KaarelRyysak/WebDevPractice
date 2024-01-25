@@ -1,7 +1,6 @@
 <?php
     session_start();
     $settings = include './config/config.php';
-    echo $settings['hostname'].$settings['username'].$settings['password'];
     //connect to database with info from config.php
     $mysqli = new mysqli($settings['hostname'], $settings['username'], $settings['password']) or die("Cannot connect to database, check settings.php");
     $mysqli->select_db($settings['database']) or die("Invalid database name, check settings.php");
@@ -37,9 +36,10 @@
         }
         if ($login_match == false)
         {
-            echo '<script>alert("Incorrect password!");</script>';        // Prompts the user
-            echo '<script>window.location.assign("login.php");</script>'; // redirects to login.php
-        
+            echo 'Incorrect password!';
+            header("HTTP/1.1 403 Forbidden"); // not the best way of doing things
+            // Given more time, I might rework this so it would work nicely without javascript too
+            exit;
         }
     }
     else
@@ -48,10 +48,10 @@
         // informing users whether their username/password is valid is not advised. 
         // This application does so strictly for demonstration and testing purposes.
 
-        // A fully realized application should only return a generic 
-        // "wrong username or password" prompt. It should also require some form of captcha
+        // A fully realized application should require some form of captcha
         // to prevent rapid password cracking attempts. The internet is unpredictable,
         // it is important to prepare for any and all types of actors.
-        echo '<script>alert("Incorrect username!");</script>';        // Prompts the user
-        echo '<script>window.location.assign("login.php");</script>'; // redirects to login.php
+        echo 'Incorrect username!';
+        header("HTTP/1.1 403 Forbidden");
+        exit;
     }

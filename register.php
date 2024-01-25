@@ -18,8 +18,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if($username == $table_user)
         {
             $userDataValid = false;
-            echo '<script>alert("Username has been taken!");</script>'; // prompts user
-            echo '<script>window.location.assign("register.php");</script>'; // redirects
+            echo 'Username has been taken!'; // Note: this is insecure, bad actors can just try every username until one works
+            header("HTTP/1.1 403 Forbidden"); // not the best way of doing things
+            // Given more time, I might rework this so it would work nicely without javascript too
+            exit;
         }
     }
     
@@ -29,8 +31,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         VALUES (?, ?)"); // prepares to insert values into table users
         $stmt->bind_param("ss", $username, $password); // binds values to statement (to avoid injection)
         $stmt->execute();
-        echo '<script>alert("Successfully Registered!");</script>'; // prompts user
-        echo '<script>window.location.assign("index.php");</script>'; // redirects
+        header("location: login.php"); // redirect
     }
 }
 //set page template filename, this will be called within general template

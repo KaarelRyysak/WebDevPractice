@@ -1,7 +1,8 @@
 <?php
 session_start();
 if (!$_SESSION['user']) { // if not logged in
-    header("location: index.php"); // redirect
+    //header("location: index.php");
+    loadAndReplaceContent("index.php", "login"); // redirect
 }
 $user = $_SESSION['user']; // assigns user value
 
